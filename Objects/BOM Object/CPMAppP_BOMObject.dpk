@@ -1,0 +1,49 @@
+package CPMAppP_BOMObject;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'CPM Master BOM Object Package'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  CPMAppP_Interface;
+
+contains
+  CPMApp_BOMObject in 'CPMApp_BOMObject.pas',
+  CPMApp_DOPIsMerkezKart in 'CPMApp_DOPIsMerkezKart.pas',
+  CPMApp_DOPMamulKart in 'CPMApp_DOPMamulKart.pas',
+  CPMApp_DOPUretimKaynakKart in 'CPMApp_DOPUretimKaynakKart.pas',
+  CPMApp_DOPUretimTakvimKart in 'CPMApp_DOPUretimTakvimKart.pas',
+  CPMApp_DOPUretimVardiyaKart in 'CPMApp_DOPUretimVardiyaKart.pas',
+  CPMApp_DOPUretimYilKart in 'CPMApp_DOPUretimYilKart.pas',
+  CPMApp_DOPUretimDurusKart in 'CPMApp_DOPUretimDurusKart.pas',
+  CPMApp_DOPMRPParametreKart in 'CPMApp_DOPMRPParametreKart.pas',
+  CPMApp_DOPUretimParametreKart in 'CPMApp_DOPUretimParametreKart.pas',
+  CPMApp_DOPStokKarsilamaPolitika in 'CPMApp_DOPStokKarsilamaPolitika.pas',
+  CPMApp_DOPUretimHataKart in 'CPMApp_DOPUretimHataKart.pas',
+  CPMApp_DOPMamulKullanimKart in 'CPMApp_DOPMamulKullanimKart.pas',
+  CPMApp_DocFormKaynakKart in 'CPMApp_DocFormKaynakKart.pas' {AppDocFormKaynakKart},
+  CPMApp_DocChildKaynakKart in 'CPMApp_DocChildKaynakKart.pas';
+
+end.

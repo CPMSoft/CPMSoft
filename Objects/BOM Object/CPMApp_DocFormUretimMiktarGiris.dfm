@@ -1,0 +1,32 @@
+object AppDocFormUretimMiktarGiris: TAppDocFormUretimMiktarGiris
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'AppDocFormUretimMiktarGiris'
+  ClientHeight = 92
+  ClientWidth = 205
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object edtMiktar: TcxTextEdit
+    Left = 4
+    Top = 4
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -64
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 0
+    Width = 197
+  end
+end
