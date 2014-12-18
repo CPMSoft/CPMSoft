@@ -1,0 +1,109 @@
+package CPMAppP_BOMModel;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'CPM Master BOM Model Package'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  CPMAppP_DataControllerCommon;
+
+contains
+  CPMApp_DOPCustomUretimYilKart in 'CPMApp_DOPCustomUretimYilKart.pas',
+  CPMApp_DAPCustomIsMerkezKart in 'CPMApp_DAPCustomIsMerkezKart.pas',
+  CPMApp_DAPCustomMamulKart in 'CPMApp_DAPCustomMamulKart.pas',
+  CPMApp_DAPCustomUretimKaynakKart in 'CPMApp_DAPCustomUretimKaynakKart.pas',
+  CPMApp_DAPCustomUretimTakvimKart in 'CPMApp_DAPCustomUretimTakvimKart.pas',
+  CPMApp_DAPCustomUretimVardiyaKart in 'CPMApp_DAPCustomUretimVardiyaKart.pas',
+  CPMApp_DAPCustomUretimYilKart in 'CPMApp_DAPCustomUretimYilKart.pas',
+  CPMApp_DataChildIsMerkezKart in 'CPMApp_DataChildIsMerkezKart.pas',
+  CPMApp_DataChildIsMerkezKaynak in 'CPMApp_DataChildIsMerkezKaynak.pas',
+  CPMApp_DataChildMamulBaslik in 'CPMApp_DataChildMamulBaslik.pas',
+  CPMApp_DataChildMamulKart in 'CPMApp_DataChildMamulKart.pas',
+  CPMApp_DataChildMamulNot in 'CPMApp_DataChildMamulNot.pas',
+  CPMApp_DataChildMamulRota in 'CPMApp_DataChildMamulRota.pas',
+  CPMApp_DataChildMamulRotaKaynak in 'CPMApp_DataChildMamulRotaKaynak.pas',
+  CPMApp_DataChildMamulRotaSonrakiOperasyon in 'CPMApp_DataChildMamulRotaSonrakiOperasyon.pas',
+  CPMApp_DataChildMamulStokKart in 'CPMApp_DataChildMamulStokKart.pas',
+  CPMApp_DataChildUretimKaynakDevamsizlik in 'CPMApp_DataChildUretimKaynakDevamsizlik.pas',
+  CPMApp_DataChildUretimKaynakKart in 'CPMApp_DataChildUretimKaynakKart.pas',
+  CPMApp_DataChildUretimKaynakMamulDegisim in 'CPMApp_DataChildUretimKaynakMamulDegisim.pas',
+  CPMApp_DataChildUretimKaynakMamulKurulum in 'CPMApp_DataChildUretimKaynakMamulKurulum.pas',
+  CPMApp_DataChildUretimKaynakNot in 'CPMApp_DataChildUretimKaynakNot.pas',
+  CPMApp_DataChildUretimKaynakTahsisat in 'CPMApp_DataChildUretimKaynakTahsisat.pas',
+  CPMApp_DataChildUretimKaynakTakvim in 'CPMApp_DataChildUretimKaynakTakvim.pas',
+  CPMApp_DataChildUretimTakvimKart in 'CPMApp_DataChildUretimTakvimKart.pas',
+  CPMApp_DataChildUretimTakvimVardiya in 'CPMApp_DataChildUretimTakvimVardiya.pas',
+  CPMApp_DataChildUretimVardiyaKart in 'CPMApp_DataChildUretimVardiyaKart.pas',
+  CPMApp_DataChildUretimVardiyaKaynak in 'CPMApp_DataChildUretimVardiyaKaynak.pas',
+  CPMApp_DataChildUretimVardiyaSaat in 'CPMApp_DataChildUretimVardiyaSaat.pas',
+  CPMApp_DataChildUretimYilKart in 'CPMApp_DataChildUretimYilKart.pas',
+  CPMApp_DataChildUretimYilTatil in 'CPMApp_DataChildUretimYilTatil.pas',
+  CPMApp_DOPCustomIsMerkezKart in 'CPMApp_DOPCustomIsMerkezKart.pas',
+  CPMApp_DOPCustomMamulKart in 'CPMApp_DOPCustomMamulKart.pas',
+  CPMApp_DOPCustomUretimKaynakKart in 'CPMApp_DOPCustomUretimKaynakKart.pas',
+  CPMApp_DOPCustomUretimTakvimKart in 'CPMApp_DOPCustomUretimTakvimKart.pas',
+  CPMApp_DOPCustomUretimVardiyaKart in 'CPMApp_DOPCustomUretimVardiyaKart.pas',
+  CPMApp_DataChildHammaddeStokKart in 'CPMApp_DataChildHammaddeStokKart.pas',
+  CPMApp_DataChildUretimDurusKart in 'CPMApp_DataChildUretimDurusKart.pas',
+  CPMApp_DAPCustomUretimDurusKart in 'CPMApp_DAPCustomUretimDurusKart.pas',
+  CPMApp_DOPCustomUretimDurusKart in 'CPMApp_DOPCustomUretimDurusKart.pas',
+  CPMApp_DataChildMamulAgac in 'CPMApp_DataChildMamulAgac.pas',
+  CPMApp_DataChildUretimParametre in 'CPMApp_DataChildUretimParametre.pas',
+  CPMApp_DataChildMRPParametre in 'CPMApp_DataChildMRPParametre.pas',
+  CPMApp_DAPCustomMRPParametreKart in 'CPMApp_DAPCustomMRPParametreKart.pas',
+  CPMApp_DAPCustomUretimParametreKart in 'CPMApp_DAPCustomUretimParametreKart.pas',
+  CPMApp_DOPCustomMRPParametreKart in 'CPMApp_DOPCustomMRPParametreKart.pas',
+  CPMApp_DOPCustomUretimParametreKart in 'CPMApp_DOPCustomUretimParametreKart.pas',
+  CPMApp_DataChildStokKarsilamaPolitika in 'CPMApp_DataChildStokKarsilamaPolitika.pas',
+  CPMApp_DAPCustomStokKarsilamaPolitika in 'CPMApp_DAPCustomStokKarsilamaPolitika.pas',
+  CPMApp_DOPCustomStokKarsilamaPolitika in 'CPMApp_DOPCustomStokKarsilamaPolitika.pas',
+  CPMApp_DataChildFMEAFormBaslik in 'CPMApp_DataChildFMEAFormBaslik.pas',
+  CPMApp_DataChildFMEAFormDetay in 'CPMApp_DataChildFMEAFormDetay.pas',
+  CPMApp_DataChildFMEAFormRevizyon in 'CPMApp_DataChildFMEAFormRevizyon.pas',
+  CPMApp_DataChildUretimHataKart in 'CPMApp_DataChildUretimHataKart.pas',
+  CPMApp_DAPCustomUretimHataKart in 'CPMApp_DAPCustomUretimHataKart.pas',
+  CPMApp_DOPCustomUretimHataKart in 'CPMApp_DOPCustomUretimHataKart.pas',
+  CPMApp_DataControllerMaliyet in 'CPMApp_DataControllerMaliyet.pas',
+  CPMApp_TableBOMSystem in 'CPMApp_TableBOMSystem.pas',
+  CPMApp_TableMRPSystem in 'CPMApp_TableMRPSystem.pas',
+  CPMApp_TableUretimSystem in 'CPMApp_TableUretimSystem.pas',
+  CPMApp_DataControllerBOMObject in 'CPMApp_DataControllerBOMObject.pas',
+  CPMApp_DataControllerBOMLevel in 'CPMApp_DataControllerBOMLevel.pas',
+  CPMApp_DataControllerBOMTree in 'CPMApp_DataControllerBOMTree.pas',
+  CPMApp_DataChildMamulKullanimKart in 'CPMApp_DataChildMamulKullanimKart.pas',
+  CPMApp_DAPCustomMamulKullanimKart in 'CPMApp_DAPCustomMamulKullanimKart.pas',
+  CPMApp_DOPCustomMamulKullanimKart in 'CPMApp_DOPCustomMamulKullanimKart.pas',
+  CPMApp_DataChildMamulRevizyon in 'CPMApp_DataChildMamulRevizyon.pas',
+  CPMApp_DataChildMamulKullanimGrup in 'CPMApp_DataChildMamulKullanimGrup.pas',
+  CPMApp_DataChildMamulYanUrun in 'CPMApp_DataChildMamulYanUrun.pas',
+  CPMApp_BOMStrs in 'CPMApp_BOMStrs.pas',
+  CPMApp_BOMCall in 'CPMApp_BOMCall.pas',
+  CPMApp_BOMConsts in 'CPMApp_BOMConsts.pas',
+  CPMApp_DataChildUretimKaynakIslemTanim in 'CPMApp_DataChildUretimKaynakIslemTanim.pas',
+  CPMApp_DataChildUretimKaynakAlternatifTanim in 'CPMApp_DataChildUretimKaynakAlternatifTanim.pas',
+  CPMApp_TableBOMCustomSystem in 'CPMApp_TableBOMCustomSystem.pas',
+  CPMApp_DataChildUretimKaynakDemirbas in 'CPMApp_DataChildUretimKaynakDemirbas.pas';
+
+end.
