@@ -1,0 +1,87 @@
+package CPMAppP_SProductionModel;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'CPM Master Production Model Package'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  CPMAppP_DocumentModel,
+  CPMAppP_BOMModel,
+  vcl,
+  rtl,
+  dbrtl;
+
+contains
+  CPMApp_DAPCustomUretim in 'CPMApp_DAPCustomUretim.pas',
+  CPMApp_DataChildStokDurum in 'CPMApp_DataChildStokDurum.pas',
+  CPMApp_DataChildUretimBaslik in 'CPMApp_DataChildUretimBaslik.pas',
+  CPMApp_DataChildUretimEvrakBaslik in 'CPMApp_DataChildUretimEvrakBaslik.pas',
+  CPMApp_DataChildUretimHareket in 'CPMApp_DataChildUretimHareket.pas',
+  CPMApp_DataChildUretimKart in 'CPMApp_DataChildUretimKart.pas',
+  CPMApp_DataChildUretimMamulKart in 'CPMApp_DataChildUretimMamulKart.pas',
+  CPMApp_DataChildUretimRota in 'CPMApp_DataChildUretimRota.pas',
+  CPMApp_DataChildUretimRotaKaynak in 'CPMApp_DataChildUretimRotaKaynak.pas',
+  CPMApp_DataChildUretimStokHareket in 'CPMApp_DataChildUretimStokHareket.pas',
+  CPMApp_DataChildUretimStokMaliyet in 'CPMApp_DataChildUretimStokMaliyet.pas',
+  CPMApp_DataControllerUretim in 'CPMApp_DataControllerUretim.pas',
+  CPMApp_DOPCustomUretim in 'CPMApp_DOPCustomUretim.pas',
+  CPMApp_DataChildUretimEvrakKaynak in 'CPMApp_DataChildUretimEvrakKaynak.pas',
+  CPMApp_DataChildUretimBaglanti in 'CPMApp_DataChildUretimBaglanti.pas',
+  CPMApp_DataControllerUretimBaglanti in 'CPMApp_DataControllerUretimBaglanti.pas',
+  CPMApp_DocChildUretimAjan in 'CPMApp_DocChildUretimAjan.pas',
+  CPMApp_DocChildUretimKartAjan in 'CPMApp_DocChildUretimKartAjan.pas',
+  CPMApp_DAPCustomUretimKart in 'CPMApp_DAPCustomUretimKart.pas',
+  CPMApp_DOPCustomUretimKart in 'CPMApp_DOPCustomUretimKart.pas',
+  CPMApp_DataControllerUretimKart in 'CPMApp_DataControllerUretimKart.pas',
+  CPMApp_DataChildUretimRotaKaynakDurus in 'CPMApp_DataChildUretimRotaKaynakDurus.pas',
+  CPMApp_DataChildUretimDepoBaslik in 'CPMApp_DataChildUretimDepoBaslik.pas',
+  CPMApp_DataChildUretimDepoTransfer in 'CPMApp_DataChildUretimDepoTransfer.pas',
+  CPMApp_DataChildUretimRotaKaynakOperasyon in 'CPMApp_DataChildUretimRotaKaynakOperasyon.pas',
+  CPMApp_DAPCustomEvrakUretimIslem in 'CPMApp_DAPCustomEvrakUretimIslem.pas',
+  CPMApp_DocChildEvrakUretimParametre in 'CPMApp_DocChildEvrakUretimParametre.pas',
+  CPMApp_DataControllerEvrakUretim in 'CPMApp_DataControllerEvrakUretim.pas',
+  CPMApp_DocChildEvrakUretimBaglanti in 'CPMApp_DocChildEvrakUretimBaglanti.pas',
+  CPMApp_DataChildEvrakUretimError in 'CPMApp_DataChildEvrakUretimError.pas',
+  CPMApp_DataChildUretimRotaKaynakHata in 'CPMApp_DataChildUretimRotaKaynakHata.pas',
+  CPMApp_SProductionStrs in 'CPMApp_SProductionStrs.pas',
+  CPMApp_SProductionConsts in 'CPMApp_SProductionConsts.pas',
+  CPMApp_SProductionCall in 'CPMApp_SProductionCall.pas',
+  CPMApp_DOPCustomUretimTerminalVeriGiris in 'CPMApp_DOPCustomUretimTerminalVeriGiris.pas',
+  CPMApp_DAPCustomUretimTerminalAyarlar in 'CPMApp_DAPCustomUretimTerminalAyarlar.pas',
+  CPMApp_DataChildUretimTerminalBaslik in 'CPMApp_DataChildUretimTerminalBaslik.pas',
+  CPMApp_DataChildUretimTerminalKaynak in 'CPMApp_DataChildUretimTerminalKaynak.pas',
+  CPMApp_DataChildUretimTerminalPersonel in 'CPMApp_DataChildUretimTerminalPersonel.pas',
+  CPMApp_DOPCustomUretimTerminalAyarlar in 'CPMApp_DOPCustomUretimTerminalAyarlar.pas',
+  CPMApp_TableUretimTempSystem in 'CPMApp_TableUretimTempSystem.pas',
+  CPMApp_DataChildUretimRotaKaynakIslem in 'CPMApp_DataChildUretimRotaKaynakIslem.pas',
+  CPMApp_DocChildUretimKartIslemSira in 'CPMApp_DocChildUretimKartIslemSira.pas',
+  CPMApp_DocChildUretimKartReport in 'CPMApp_DocChildUretimKartReport.pas',
+  CPMApp_DataChildUretimTerminalKaynakIslemTanim in 'CPMApp_DataChildUretimTerminalKaynakIslemTanim.pas',
+  CPMApp_DataChildSiparisHareketUretim in 'CPMApp_DataChildSiparisHareketUretim.pas',
+  CPMApp_DataChildUretimRotaKaynakNot in 'CPMApp_DataChildUretimRotaKaynakNot.pas';
+
+end.
+
+

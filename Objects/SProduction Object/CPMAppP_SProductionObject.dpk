@@ -1,0 +1,69 @@
+package CPMAppP_SProductionObject;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'CPM Master Production Object Package'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  CPMAppP_DocumentObject;
+
+contains
+  CPMApp_SProductionObject in 'CPMApp_SProductionObject.pas',
+  CPMApp_DOPUretim in 'CPMApp_DOPUretim.pas',
+  CPMApp_YenidenMaliyetlendirme in 'CPMApp_YenidenMaliyetlendirme.pas' {FormYenidenMaliyetlendirme},
+  CPMApp_DOPUretimKart in 'CPMApp_DOPUretimKart.pas',
+  CPMApp_DOPEvrakUretimIslem in 'CPMApp_DOPEvrakUretimIslem.pas',
+  CPMApp_DocFormUretimTerminalMenu in 'CPMApp_DocFormUretimTerminalMenu.pas',
+  CPMApp_DocFormUretimTerminalNumPad in 'CPMApp_DocFormUretimTerminalNumPad.pas',
+  CPMApp_DOPUretimTerminalVeriGiris in 'CPMApp_DOPUretimTerminalVeriGiris.pas',
+  CPMApp_DOPUretimTerminalAyarlar in 'CPMApp_DOPUretimTerminalAyarlar.pas',
+  CPMApp_DocChildUretimTerminalKaynakEvrakList in 'CPMApp_DocChildUretimTerminalKaynakEvrakList.pas',
+  CPMApp_DocChildUretimTerminalKaynakIslem in 'CPMApp_DocChildUretimTerminalKaynakIslem.pas',
+  CPMApp_DocChildUretimTerminalKaynakList in 'CPMApp_DocChildUretimTerminalKaynakList.pas',
+  CPMApp_DocChildUretimTerminalManualTuketim in 'CPMApp_DocChildUretimTerminalManualTuketim.pas',
+  CPMApp_DocChildUretimTerminalProperties in 'CPMApp_DocChildUretimTerminalProperties.pas',
+  CPMApp_DocCostumUretimTerminalSendKey in 'CPMApp_DocCostumUretimTerminalSendKey.pas',
+  CPMApp_DocChildUretimTerminalReceteTuketim in 'CPMApp_DocChildUretimTerminalReceteTuketim.pas',
+  CPMApp_DocChildUretimTerminalKaynakDurus in 'CPMApp_DocChildUretimTerminalKaynakDurus.pas',
+  CPMApp_DocChildUretimTerminalKaliteIslem in 'CPMApp_DocChildUretimTerminalKaliteIslem.pas',
+  CPMApp_DocChildUretimTerminalKaliteHMSecim in 'CPMApp_DocChildUretimTerminalKaliteHMSecim.pas',
+  CPMApp_DocChildUretimTerminalKaliteEvrakList in 'CPMApp_DocChildUretimTerminalKaliteEvrakList.pas',
+  CPMApp_DocChildUretimTerminalDolumBilgileri in 'CPMApp_DocChildUretimTerminalDolumBilgileri.pas',
+  CPMApp_DocChildUretimTerminalAmbalajBilgileri in 'CPMApp_DocChildUretimTerminalAmbalajBilgileri.pas',
+  CPMApp_DocChildUretimTerminalHMDegisim in 'CPMApp_DocChildUretimTerminalHMDegisim.pas',
+  CPMApp_DocChildUretimTerminalMalzemeDurus in 'CPMApp_DocChildUretimTerminalMalzemeDurus.pas',
+  CPMApp_DocFormUretimTerminalSettings in 'CPMApp_DocFormUretimTerminalSettings.pas' {AppDocFormUretimTerminalSettings},
+  CPMApp_DocChildUretimTerminalReports in 'CPMApp_DocChildUretimTerminalReports.pas',
+  CPMApp_DocChildUretimTerminalKaliteDurus in 'CPMApp_DocChildUretimTerminalKaliteDurus.pas',
+  CPMApp_DocChildUretimTerminalMalzemeBilgileri in 'CPMApp_DocChildUretimTerminalMalzemeBilgileri.pas',
+  CPMApp_DocChildUretimTerminalUyariSistem in 'CPMApp_DocChildUretimTerminalUyariSistem.pas',
+  CPMApp_DocFormUretimTerminalNumPadCaption in 'CPMApp_DocFormUretimTerminalNumPadCaption.pas' {AppDocFormUretimTerminalNumPadCaption},
+  CPMApp_FormTerminalLogin in 'CPMApp_FormTerminalLogin.pas' {AppFormTerminalLogin: TFrame},
+  CPMApp_FormTerminalDateSetting in 'CPMApp_FormTerminalDateSetting.pas' {AppFormTerminalDateSetting},
+  CPMApp_DocFormOperasyonMenu in 'CPMApp_DocFormOperasyonMenu.pas' {AppDocFormOperasyonMenu},
+  CPMApp_DocFormMessageDlg in 'CPMApp_DocFormMessageDlg.pas' {AppDocFormMessaegeDlg},
+  CPMApp_DocChildTerminalRotaKaynakNot in 'CPMApp_DocChildTerminalRotaKaynakNot.pas';
+
+end.
