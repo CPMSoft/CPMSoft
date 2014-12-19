@@ -87,7 +87,7 @@ type
   end;
 
   TAppMamulKartData = class
-    // Mamül Kart
+    // MamÃ¼l Kart
     ReceteNo: String;
     RevizyonNo: String;
     ReceteSiraNo: Integer;
@@ -113,17 +113,17 @@ type
     DepoKod: String;
     KodUretim: Smallint;
 
-    // Mamül Stok Kart ve Stok Birim Alanları
+    // MamÃ¼l Stok Kart ve Stok Birim AlanlarÃ½
     MamulStokKartBirim: String;
     MamulStokKartMontajFireOran: Double;
     MamulStokBirimKatsayi: Double;
 
-    // Mamül Başlık
+    // MamÃ¼l BaÃ¾lÃ½k
     MamulBirim: String;
     MamulDepoKod: String;
     MamulHammaddeDepoKod: String;
 
-    // Hammadde Stok Kart, Stok Birim ve Mamül Başlık Alanları
+    // Hammadde Stok Kart, Stok Birim ve MamÃ¼l BaÃ¾lÃ½k AlanlarÃ½
     HammaddeStokKartBirim: String;
     HammaddeStokKartBilesenFireOran: Double;
     HammaddeStokKartYuvarlama: Smallint;
@@ -172,7 +172,7 @@ type
     property Round: Boolean read FRound write FRound;
     property LotKapat: Boolean read FLotKapat write FLotKapat;
     property KullanimGrupNo: Integer read FKullanimGrupNo write FKullanimGrupNo;
-    // MRP için Parametreler
+    // MRP iÃ§in Parametreler
     property CheckMRPTip: Boolean read FCheckMRPTip write FCheckMRPTip;
     property ReqType: TAppMRPReqType read FReqType write FReqType;
     property MRPSiraNo: Integer read FMRPSiraNo write FMRPSiraNo;
@@ -439,23 +439,23 @@ constructor TAppDataControllerBOMTreeParams.Create(AOwner: TAppDataControllerBOM
 begin
   FOwner := AOwner;
   
-                         // Ağaç        Üretim       MRP     Açıklama
+                         // AÃ°aÃ§        Ãœretim       MRP     AÃ§Ã½klama
   SingleLevel := True;   // Parametrik  True         True    Genel
   SipariseUretim := False;
-  ReturnPhantom := False;// Parametrik  True         True    Ağaç için eklendi
+  ReturnPhantom := False;// Parametrik  True         True    AÃ°aÃ§ iÃ§in eklendi
   ReturnRoute := False;  // Parametrik  True         False   Genel
   ReturnProcess := False;// Parametrik  True         False   Genel
   CalcScrap := 1;        // Parametrik  Parametrik   1       Genel
   Round := True;         // Parametrik  Parametrik   True    Genel
-  LotKapat := False;     // Parametrik  True         False   Üretim için eklendi.
+  LotKapat := False;     // Parametrik  True         False   Ãœretim iÃ§in eklendi.
 
   FReqType := mrprtBagimli;
 
-  // Stok Kapat kullanıldığında verilmek zorunda.
+  // Stok Kapat kullanÃ½ldÃ½Ã°Ã½nda verilmek zorunda.
   FMamulDepoKod := '';
   FHammaddeDepoKod := '';
 
-  // Özel Reçete varsa verilmek zorunda
+  // Ã–zel ReÃ§ete varsa verilmek zorunda
   FOzelReceteTip := 0;
   FEvrakTip := 0;
   FHesapKod := '';
@@ -590,7 +590,7 @@ begin
     AData.Miktar := Miktar;
     AData.Birim := Birim;
 
-    AData.SeviyeKod := 0; // 0 - Kendisi 1- Birinci Seviye ve 2 den sonra diğer seviyeler
+    AData.SeviyeKod := 0; // 0 - Kendisi 1- Birinci Seviye ve 2 den sonra diÃ°er seviyeler
 
     InternalWhereUsed(AData);
   finally
@@ -864,7 +864,7 @@ var
     FMamulKart.TableRotaKaynak.First;
     while not FMamulKart.TableRotaKaynak.Eof do
     begin
-      if FMamulKart.TableRotaKaynak.KullanimTip = 1 then // Sadece kullanılım tip = 1 olanları ekliyoruz. 30.12.2013 Veysel
+      if FMamulKart.TableRotaKaynak.KullanimTip = 1 then // Sadece kullanÃ½lÃ½m tip = 1 olanlarÃ½ ekliyoruz. 30.12.2013 Veysel
       begin
         if FMamulKurulum.Find(FMamulKart.TableRotaKaynak.KaynakKod, FMamulKart.TableRotaKaynak.MamulKod) then
           ACalismaSure := FMamulKurulum.Table.CalismaSure
@@ -910,7 +910,10 @@ var
       KaynakIslemData.IslemTip := FKaynakIslem.Table.IslemTip;
       KaynakIslemData.OperatorKod := FKaynakIslem.Table.OperatorKod;
       KaynakIslemData.SeviyeKod := ARotaData.SeviyeKod;
-      KaynakIslemData.ParentID := ARotaData.ID; // Sadece ağaç gösterimi için
+      KaynakIslemData.OncekiIslemNo := FKaynakIslem.Table.FieldValues['ONCEKIISLEMNO'];
+      KaynakIslemData.OncekiIslemDurum := FKaynakIslem.Table.FieldValues['ONCEKIISLEMDURUM'];
+      KaynakIslemData.EylemTip := FKaynakIslem.Table.FieldValues['EYLEMTIP'];
+      KaynakIslemData.ParentID := ARotaData.ID; // Sadece aÃ°aÃ§ gÃ¶sterimi iÃ§in
 
       DoOnReturnRoute(KaynakIslemData);
       FKaynakIslem.Table.Next;
@@ -959,7 +962,7 @@ var
 //        KaynakData.Kullanilan := FMemTableKaynak.KullanimTip = 1;
       KaynakData.Kullanilan := AMinKaynakKod = KaynakData.KaynakKod;
       KaynakData.SeviyeKod := ARotaData.SeviyeKod;
-      KaynakData.ParentID := ARotaData.ID; // Sadece ağaç gösterimi için
+      KaynakData.ParentID := ARotaData.ID; // Sadece aÃ°aÃ§ gÃ¶sterimi iÃ§in
 
       if Params.ReturnProcess then
         AddKaynakIslem(KaynakData);
@@ -1013,7 +1016,7 @@ var
       RotaData.KaynakKod := '';
       RotaData.Aciklama := FMemTableRota.Aciklama;
       RotaData.SeviyeKod := AMamulSeviyeKod; 
-      RotaData.ParentID := AMamulDataID; // Sadece ağaç gösterimi için
+      RotaData.ParentID := AMamulDataID; // Sadece aÃ°aÃ§ gÃ¶sterimi iÃ§in
 
       AddKaynak(RotaData);
 
@@ -1025,12 +1028,12 @@ var
 
   procedure AddHammadde(var AMaliyetData: TAppMaliyetData);
   begin
-    if (HammaddeData.MalTip = botCoProduct) and (HammaddeData.YanUrunMaliyetOran >= 0) then // Yan Ürün
+    if (HammaddeData.MalTip = botCoProduct) and (HammaddeData.YanUrunMaliyetOran >= 0) then // Yan ÃœrÃ¼n
     begin
       EndMaliyetData(HammaddeData.Miktar, HammaddeData.Maliyet);
       DoOnReturn(HammaddeData);
     end
-    else if HammaddeData.SonSeviye then // Hammadde (Hammadde veya Yarı Mamül) veyahut Yan Ürün
+    else if HammaddeData.SonSeviye then // Hammadde (Hammadde veya YarÃ½ MamÃ¼l) veyahut Yan ÃœrÃ¼n
     begin
       // Get Hammadde Maliyet
       dcMaliyet.Execute(HammaddeData.MalKod, HammaddeData.VersiyonNo, HammaddeData.DepoKod, '', '', HammaddeData.Miktar + HammaddeData.FireMiktar, AMaliyetData);
@@ -1058,7 +1061,7 @@ var
         AMaliyetData.MaliyetGrupDiger := AMaliyetData.Maliyet;
         AMaliyetData.YerelMaliyetGrupDiger := AMaliyetData.YerelMaliyet;
       end;
-      if (HammaddeData.MalTip <> botCoProduct) and (HammaddeData.YanUrunNo <> 0) then // Yan Ürün No tanımlı bir hammadde ise
+      if (HammaddeData.MalTip <> botCoProduct) and (HammaddeData.YanUrunNo <> 0) then // Yan ÃœrÃ¼n No tanÃ½mlÃ½ bir hammadde ise
       begin
         if FMemTableYanUrun.FindKey([HammaddeData.ReceteNo, HammaddeData.RevizyonNo, HammaddeData.YanUrunNo]) then
         begin
@@ -1087,7 +1090,7 @@ var
       // Return Hammadde Maliyet
       HammaddeData.Maliyet := AMaliyetData;
       DoOnReturn(HammaddeData);
-    end else // Assembly (Mamül, Yarı Mamül veya Hayalet Montaj)
+    end else // Assembly (MamÃ¼l, YarÃ½ MamÃ¼l veya Hayalet Montaj)
       ChildMamulList.Add(HammaddeData);
   end;
 
@@ -1096,16 +1099,16 @@ var
     // Montaj Firesini Ekle //
     if MamulKartData.OperasyonFireKullan = 1 then // Operasyon Firesini Kullan
     begin
-      // Firenin firesini almaması için önce oranı al sonra sabit miktarı ekle.
+      // Firenin firesini almamasÃ½ iÃ§in Ã¶nce oranÃ½ al sonra sabit miktarÃ½ ekle.
       Result := Miktar * MamulKartData.OperasyonFireOran / 100;
       Result := Result + MamulKartData.OperasyonFireMiktar;
     end else // Montaj Firesini Kullan
       Result := Miktar * MamulKartData.MamulStokKartMontajFireOran / 100;
 
-    // Bileşen Firesini Ekle //
-    if MamulKartData.BilesenFireOran > 0 then // Mamül Kart tablosuna Bileşen Fire Oranı Girilmiş İse
+    // BileÃ¾en Firesini Ekle //
+    if MamulKartData.BilesenFireOran > 0 then // MamÃ¼l Kart tablosuna BileÃ¾en Fire OranÃ½ GirilmiÃ¾ Ãse
       Result := Result + (Miktar * MamulKartData.BilesenFireOran / 100)
-    else // Hammadde Tablosuna girilmemiş ise stok kart da yazan bileşen fire oranını kullan.
+    else // Hammadde Tablosuna girilmemiÃ¾ ise stok kart da yazan bileÃ¾en fire oranÃ½nÃ½ kullan.
       Result := Result + (Miktar * MamulKartData.HammaddeStokKartBilesenFireOran / 100);
   end;
 
@@ -1118,29 +1121,29 @@ var
   begin
     ResetMaliyetData(Result);
 
-    // Mamül Birim Çevrim //
+    // MamÃ¼l Birim Ã‡evrim //
     vMamulMiktar := MamulData.Miktar;
 
-    if MamulData.Birim <> MamulKartData.MamulBirim then // İstenen mamülün birimi mamül ağacı birimi ile aynı ise çevrime gerek yok.
+    if MamulData.Birim <> MamulKartData.MamulBirim then // Ãstenen mamÃ¼lÃ¼n birimi mamÃ¼l aÃ°acÃ½ birimi ile aynÃ½ ise Ã§evrime gerek yok.
     begin
-      if MamulData.Birim <> MamulKartData.MamulStokKartBirim then // Önce istenen mamülün birimi stok birimine çevir
+      if MamulData.Birim <> MamulKartData.MamulStokKartBirim then // Ã–nce istenen mamÃ¼lÃ¼n birimi stok birimine Ã§evir
       begin
         if dcCommon.StokBirim.Find(MamulData.MalKod, MamulData.Birim) and (dcCommon.StokBirim.Table.Katsayi > 0) then
           vMamulMiktar := vMamulMiktar * dcCommon.StokBirim.Table.Katsayi
         else
-          DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamülün mamül başlığında tanımlı %s biriminin stok kart birimine çevrim kat sayısı stok birim tablosunda bulunamadı', [MamulData.MalKod, MamulData.Birim]), MamulData);
+          DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamÃ¼lÃ¼n mamÃ¼l baÃ¾lÃ½Ã°Ã½nda tanÃ½mlÃ½ %s biriminin stok kart birimine Ã§evrim kat sayÃ½sÃ½ stok birim tablosunda bulunamadÃ½', [MamulData.MalKod, MamulData.Birim]), MamulData);
       end;
 
-      if MamulKartData.MamulBirim <> MamulKartData.MamulStokKartBirim then // Sonra stok birimini mamül ağacı birimine çevir
+      if MamulKartData.MamulBirim <> MamulKartData.MamulStokKartBirim then // Sonra stok birimini mamÃ¼l aÃ°acÃ½ birimine Ã§evir
       begin
         if MamulKartData.MamulStokBirimKatsayi > 0 then
           vMamulMiktar := vMamulMiktar * MamulKartData.MamulStokBirimKatsayi
         else
-          DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamülün mamül başlığında tanımlı %s biriminin stok kart birimine çevrim kat sayısı stok birim tablosunda bulunamadı', [MamulData.MalKod, MamulKartData.MamulBirim]), MamulData);
+          DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamÃ¼lÃ¼n mamÃ¼l baÃ¾lÃ½Ã°Ã½nda tanÃ½mlÃ½ %s biriminin stok kart birimine Ã§evrim kat sayÃ½sÃ½ stok birim tablosunda bulunamadÃ½', [MamulData.MalKod, MamulKartData.MamulBirim]), MamulData);
       end;
     end;
 
-    // Hammadde Birim Çevrim //
+    // Hammadde Birim Ã‡evrim //
     vHammaddeMiktar := MamulKartData.Miktar;
     vYanUrunMiktar := MamulKartData.YanUrunMiktar;
     if MamulKartData.HammaddeBirim <> MamulKartData.HammaddeStokKartBirim then
@@ -1150,10 +1153,10 @@ var
         vHammaddeMiktar := vHammaddeMiktar * MamulKartData.HammaddeStokBirimKatsayi;
         vYanUrunMiktar := vYanUrunMiktar * MamulKartData.HammaddeStokBirimKatsayi;
       end else
-        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu hammaddenin %s nolu mamül kartında tanımlı %s biriminin stok kart birimine çevrim kat sayısı stok birim tablosunda bulunamadı', [MamulKartData.HammaddeKod, MamulData.MalKod, MamulKartData.HammaddeBirim]), MamulData);
+        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu hammaddenin %s nolu mamÃ¼l kartÃ½nda tanÃ½mlÃ½ %s biriminin stok kart birimine Ã§evrim kat sayÃ½sÃ½ stok birim tablosunda bulunamadÃ½', [MamulKartData.HammaddeKod, MamulData.MalKod, MamulKartData.HammaddeBirim]), MamulData);
     end;
 
-    // Mamülün Hammadde İhtiyacını bul //
+    // MamÃ¼lÃ¼n Hammadde ÃhtiyacÃ½nÃ½ bul //
     if MamulKartData.MiktarTip = 0 then // Oransal
     begin
       vHammaddeMiktar := vHammaddeMiktar * vMamulMiktar;
@@ -1193,11 +1196,11 @@ var
         HammaddeData.MalTip := botPhantomAssembly
       else // Others
       begin
-        if MamulKartData.HammaddeStokKartTeminYontem = Integer(tyInternal) then // Üretim
+        if MamulKartData.HammaddeStokKartTeminYontem = Integer(tyInternal) then // Ãœretim
           HammaddeData.MalTip := botProduct
         else if MamulKartData.HammaddeStokKartTeminYontem = Integer(tyPhantom) then // Hayalet Montaj
           HammaddeData.MalTip := botPhantomAssembly
-        else // tyExternal / Satınalma
+        else // tyExternal / SatÃ½nalma
           HammaddeData.MalTip := botRowMaterial;
       end;
     end;
@@ -1222,13 +1225,13 @@ var
 
     HammaddeData.PozNo := MamulKartData.PozNo;
     HammaddeData.YanUrunNo := MamulKartData.YanUrunNo;
-    if HammaddeData.MalTip = botCoProduct then // Yan Ürünler için
+    if HammaddeData.MalTip = botCoProduct then // Yan ÃœrÃ¼nler iÃ§in
     begin
       if MamulKartData.YanUrunMaliyetTip = 0 then // Kendi Maliyeti
         HammaddeData.YanUrunMaliyetOran := -1
       else // Oransal
         HammaddeData.YanUrunMaliyetOran := MamulKartData.YanUrunMaliyetOran;
-    end else // Hammaddeler için
+    end else // Hammaddeler iÃ§in
     begin
       if MamulKartData.YanUrunMaliyetTip = 0 then // Oransal
         HammaddeData.YanUrunMaliyetOran := MamulKartData.YanUrunMaliyetOran
@@ -1250,9 +1253,9 @@ var
     else
       HammaddeData.SonSeviye := HammaddeData.MalTip in [botRowMaterial, botCoProduct];
 
-    if Params.SipariseUretim then // Siparişe üretim ise yarı mamülün üretim yönteminin siparişe üretim olup olmadığı önemli
+    if Params.SipariseUretim then // SipariÃ¾e Ã¼retim ise yarÃ½ mamÃ¼lÃ¼n Ã¼retim yÃ¶nteminin sipariÃ¾e Ã¼retim olup olmadÃ½Ã°Ã½ Ã¶nemli
       if not HammaddeData.SonSeviye then
-        HammaddeData.SonSeviye := MamulKartData.HammaddeStokKartTeminTip <> Integer(ttOrder); // Siparişe üretim değil ise hammadde seviyesidir, daha alta inme
+        HammaddeData.SonSeviye := MamulKartData.HammaddeStokKartTeminTip <> Integer(ttOrder); // SipariÃ¾e Ã¼retim deÃ°il ise hammadde seviyesidir, daha alta inme
 
     if IsSkipped(MamulData.MalTip) then
     begin
@@ -1266,14 +1269,14 @@ var
 
     HammaddeData.ReqType := Params.ReqType;
 
-    if MatchFields.TableDes <> nil then // TableDes verilmişse match field yap
+    if MatchFields.TableDes <> nil then // TableDes verilmiÃ¾se match field yap
     begin
       for I := 0 to MatchFields.FieldSrcList.Count - 1 do
         if Assigned(MatchFields.FieldSrcList.Objects[I]) then
           HammaddeData.MatchValues[I] := TField(MatchFields.FieldSrcList.Objects[I]).Value;
     end;
 
-    if Params.LotKapat and (HammaddeData.MalTip <> botPhantomAssembly) and (HammaddeData.MalTip <> botCoProduct) then // Alternatiflerin çalışabilmesi için lot kapat parametresi true olmak zorunda.
+    if Params.LotKapat and (HammaddeData.MalTip <> botPhantomAssembly) and (HammaddeData.MalTip <> botCoProduct) then // Alternatiflerin Ã§alÃ½Ã¾abilmesi iÃ§in lot kapat parametresi true olmak zorunda.
     begin
       dcLotKapat.GetLotMiktar(HammaddeData.MalKod, HammaddeData.VersiyonNo, HammaddeData.DepoKod, '', '', vHammaddeMiktar);
       dcLotKapat.TableLot.First;
@@ -1281,7 +1284,7 @@ var
       begin
         HammaddeData.MalKod := dcLotKapat.TableLot.MalKod;
         HammaddeData.VersiyonNo := dcLotKapat.TableLot.VersiyonNo;
-        if (HammaddeData.MalKod = dcLotKapat.TableLot.MalKod) and (HammaddeData.VersiyonNo = dcLotKapat.TableLot.VersiyonNo) then // Yarı mamülse ve alternatifi kullanılmışsa.
+        if (HammaddeData.MalKod = dcLotKapat.TableLot.MalKod) and (HammaddeData.VersiyonNo = dcLotKapat.TableLot.VersiyonNo) then // YarÃ½ mamÃ¼lse ve alternatifi kullanÃ½lmÃ½Ã¾sa.
           HammaddeData.SurumNo := MamulKartData.HammaddeSurumNo
         else
           HammaddeData.SurumNo := 0;
@@ -1344,7 +1347,7 @@ begin
         end;
         vOzelMamulKart.First;
         if vOzelMamulKart.Eof then
-          DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malın %s nolu versiyonunun özel mamül kartı bulunamadı.', [MamulData.MalKod, MamulData.VersiyonNo]), MamulData)
+          DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malÃ½n %s nolu versiyonunun Ã¶zel mamÃ¼l kartÃ½ bulunamadÃ½.', [MamulData.MalKod, MamulData.VersiyonNo]), MamulData)
         else begin
           vHasOzelRecete := True;
           for I := 0 to MatchFields.FieldSrcList.Count - 1 do
@@ -1366,7 +1369,7 @@ begin
       begin
         FMamulKart.TableKart.First;
         if FMamulKart.TableKart.Eof then
-          DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malın %s nolu versiyonunun mamül kartı bulunamadı.', [MamulData.MalKod, MamulData.VersiyonNo]), MamulData)
+          DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malÃ½n %s nolu versiyonunun mamÃ¼l kartÃ½ bulunamadÃ½.', [MamulData.MalKod, MamulData.VersiyonNo]), MamulData)
         else
         begin
           for I := 0 to MatchFields.FieldSrcList.Count - 1 do
@@ -1392,7 +1395,7 @@ begin
         FetchMemKaynak(MamulData);
       end;
 
-      // Burada döngü yapıyorum
+      // Burada dÃ¶ngÃ¼ yapÃ½yorum
       if ChildMamulList.FList.Count > 0 then
       begin
         for I := 0 to ChildMamulList.FList.Count - 1 do
@@ -1413,14 +1416,14 @@ begin
         IncMaliyetData(vHammaddeMaliyet, Result);
       end;
 
-      // Add Yan Ürün
+      // Add Yan ÃœrÃ¼n
       FMemTableYanUrun.SetRange([vReceteNo, vRevizyonNo], [vReceteNo, vRevizyonNo]);
       FMemTableYanUrun.First;
       while not FMemTableYanUrun.Eof do
       begin
         FetchMamulYanUrun;
 
-        // Calc Yan Ürün Maliyet
+        // Calc Yan ÃœrÃ¼n Maliyet
         if FMemTableYanUrun.MaliyetTip = 1 then // Oransal
         begin
           if FMemTableYanUrun.MaliyetOran = 0 then
@@ -1460,19 +1463,19 @@ begin
           end;
         end;
 
-        // Return Yan Ürün
+        // Return Yan ÃœrÃ¼n
         AddChild;
 
-        // Add To Yan Ürün Maliyet Toplam
+        // Add To Yan ÃœrÃ¼n Maliyet Toplam
         IncMaliyetData(HammaddeData.Maliyet, vYanUrunMaliyet);
 
         FMemTableYanUrun.Next;
       end;
 
-      // Hammadde Maliyet - Yan Ürün Maliyet
+      // Hammadde Maliyet - Yan ÃœrÃ¼n Maliyet
       DecMaliyetData(vYanUrunMaliyet, Result);
 
-      // Add Ana Ürün
+      // Add Ana ÃœrÃ¼n
       EndMaliyetData(MamulData.Miktar, Result);
 
       MamulData.Maliyet := Result;
@@ -1494,44 +1497,44 @@ var
   var
     MamulMiktar, HammaddeMiktar: Double;
   begin
-    // Mamül Birim Çevrim //
+    // MamÃ¼l Birim Ã‡evrim //
     MamulMiktar := Data.Miktar;
 
-    if FMamulKart.TableKart.HammaddeBirim <> FMamulKart.TableKart.HammaddeStokKartBirim then // Mamül ağacı birimi stok biriminden farklı ise mamül ağacı birimine çevrilir.
+    if FMamulKart.TableKart.HammaddeBirim <> FMamulKart.TableKart.HammaddeStokKartBirim then // MamÃ¼l aÃ°acÃ½ birimi stok biriminden farklÃ½ ise mamÃ¼l aÃ°acÃ½ birimine Ã§evrilir.
     begin
       if FMamulKart.TableKart.HammaddeStokBirimKatsayi > 0 then
         MamulMiktar := MamulMiktar * FMamulKart.TableKart.HammaddeStokBirimKatsayi
       else
-        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamülün mamül başlığında tanımlı %s biriminin stok kart birimine çevrim kat sayısı stok birim tablosunda bulunamadı', [FMamulKart.TableKart.MamulKod, FMamulKart.TableKart.MamulBirim]), Data);
+        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu mamÃ¼lÃ¼n mamÃ¼l baÃ¾lÃ½Ã°Ã½nda tanÃ½mlÃ½ %s biriminin stok kart birimine Ã§evrim kat sayÃ½sÃ½ stok birim tablosunda bulunamadÃ½', [FMamulKart.TableKart.MamulKod, FMamulKart.TableKart.MamulBirim]), Data);
     end;
 
-    // Hammadde Birim Çevrim //
+    // Hammadde Birim Ã‡evrim //
     HammaddeMiktar := FMamulKart.TableKart.Miktar;
     if FMamulKart.TableKart.MamulBirim <> FMamulKart.TableKart.MamulStokKartBirim then
     begin
       if FMamulKart.TableKart.MamulStokBirimKatsayi > 0 then
         HammaddeMiktar := HammaddeMiktar * FMamulKart.TableKart.MamulStokBirimKatsayi
       else
-        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu hammaddenin %s nolu mamül kartında tanımlı %s biriminin stok kart birimine çevrim kat sayısı stok birim tablosunda bulunamadı', [FMamulKart.TableKart.HammaddeKod, FMamulKart.TableKart.MamulKod, FMamulKart.TableKart.HammaddeBirim]), Data);
+        DoOnReturnError('BOM Explosion', ErrCode_StokBirimCevrimNotFound, format('%s nolu hammaddenin %s nolu mamÃ¼l kartÃ½nda tanÃ½mlÃ½ %s biriminin stok kart birimine Ã§evrim kat sayÃ½sÃ½ stok birim tablosunda bulunamadÃ½', [FMamulKart.TableKart.HammaddeKod, FMamulKart.TableKart.MamulKod, FMamulKart.TableKart.HammaddeBirim]), Data);
     end;
 
-    // Mamülün Hammadde İhtiyacını bul //
+    // MamÃ¼lÃ¼n Hammadde ÃhtiyacÃ½nÃ½ bul //
     if FMamulKart.TableKart.MiktarTip = 0 then // Oransal
       HammaddeMiktar := HammaddeMiktar * MamulMiktar;
 
     // Montaj Firesini Ekle //
     if FMamulKart.TableKart.OperasyonFireKullan = 1 then // Operasyon Firesini Kullan
     begin
-      // Firenin firesini almaması için önce oranı al sonra sabit miktarı ekle.
+      // Firenin firesini almamasÃ½ iÃ§in Ã¶nce oranÃ½ al sonra sabit miktarÃ½ ekle.
       HammaddeMiktar := HammaddeMiktar + (HammaddeMiktar * FMamulKart.TableKart.OperasyonFireOran / 100);
       HammaddeMiktar := HammaddeMiktar + FMamulKart.TableKart.OperasyonFireMiktar;
     end else // Montaj Firesini Kullan
       HammaddeMiktar := HammaddeMiktar + (HammaddeMiktar * FMamulKart.TableKart.MamulStokKartMontajFireOran / 100);
 
-    // Bileşen Firesini Ekle //
-    if FMamulKart.TableKart.BilesenFireOran > 0 then // Mamül Kart tablosuna Bileşen Fire Oranı Girilmiş İse
+    // BileÃ¾en Firesini Ekle //
+    if FMamulKart.TableKart.BilesenFireOran > 0 then // MamÃ¼l Kart tablosuna BileÃ¾en Fire OranÃ½ GirilmiÃ¾ Ãse
       HammaddeMiktar := HammaddeMiktar + (HammaddeMiktar * FMamulKart.TableKart.BilesenFireOran / 100)
-    else // Hammadde Tablosuna girilmemiş ise stok kart da yazan bileşen fire oranını kullan.
+    else // Hammadde Tablosuna girilmemiÃ¾ ise stok kart da yazan bileÃ¾en fire oranÃ½nÃ½ kullan.
       HammaddeMiktar := HammaddeMiktar + (HammaddeMiktar * FMamulKart.TableKart.HammaddeStokKartBilesenFireOran / 100);
 
     // Yuvarla //
@@ -1557,14 +1560,14 @@ begin
       FMamulKart.OpenReverse(Data.MalKod, Data.VersiyonNo);
       FMamulKart.TableKart.First;
       if FMamulKart.TableKart.Eof then
-        DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malın %s nolu versiyonunun mamül kartı bulunamadı.', [Data.MalKod, Data.VersiyonNo]), Data);
+        DoOnReturnError('BOM Explosion', ErrCode_MamulKartNotFound, format('%s nolu malÃ½n %s nolu versiyonunun mamÃ¼l kartÃ½ bulunamadÃ½.', [Data.MalKod, Data.VersiyonNo]), Data);
       while not FMamulKart.TableKart.Eof do
       begin
         AddChild;
         FMamulKart.TableKart.Next;
       end;
 
-      // Burada döngü yapıyorum
+      // Burada dÃ¶ngÃ¼ yapÃ½yorum
       if ChildMamulList.FList.Count > 0 then
         for I := 0 to ChildMamulList.FList.Count - 1 do
           InternalWhereUsed(ChildMamulList.FList[I]);
@@ -1618,7 +1621,7 @@ begin
     AData.Miktar := Miktar;
     AData.Birim := Birim;
 
-    AData.SeviyeKod := 0; // 0 - Kendisi 1- Birinci Seviye ve 2 den sonra diğer seviyeler
+    AData.SeviyeKod := 0; // 0 - Kendisi 1- Birinci Seviye ve 2 den sonra diÃ°er seviyeler
 
     Params.FMamulDepoKod := MamulDepoKod;
     Params.FHammaddeDepoKod := HammaddeDepoKod;
